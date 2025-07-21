@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FiMail, FiGithub, FiLinkedin, FiTwitter, FiSend } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiMail, FiGithub, FiLinkedin, FiTwitter, FiSend, FiCheck } from 'react-icons/fi';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +10,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
+  const [focusedField, setFocusedField] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -25,25 +26,75 @@ const Contact = () => {
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
-      setSubmitStatus('Message sent successfully! 🚀');
+      setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
       
       setTimeout(() => {
         setSubmitStatus('');
-      }, 3000);
+      }, 5000);
     }, 2000);
   };
 
   const socialLinks = [
-    { name: 'Email', icon: FiMail, url: 'mailto:sumit@example.com', color: 'text-terminal-success' },
-    { name: 'GitHub', icon: FiGithub, url: 'https://github.com/sumit', color: 'text-terminal-orange-highlight' },
-    { name: 'LinkedIn', icon: FiLinkedin, url: 'https://linkedin.com/in/sumit', color: 'text-terminal-info' },
-    { name: 'Twitter', icon: FiTwitter, url: 'https://twitter.com/sumit', color: 'text-terminal-orange' }
+    { 
+      name: 'Email', 
+      icon: FiMail, 
+      url: 'mailto:sumit@example.com', 
+      color: 'text-terminal-success',
+      bgColor: 'bg-terminal-success/20',
+      borderColor: 'border-terminal-success/40',
+      description: 'Drop me a line'
+    },
+    { 
+      name: 'GitHub', 
+      icon: FiGithub, 
+      url: 'https://github.com/sumit', 
+      color: 'text-terminal-orange-highlight',
+      bgColor: 'bg-terminal-orange-highlight/20',
+      borderColor: 'border-terminal-orange-highlight/40',
+      description: 'Check my code'
+    },
+    { 
+      name: 'LinkedIn', 
+      icon: FiLinkedin, 
+      url: 'https://linkedin.com/in/sumit', 
+      color: 'text-terminal-info',
+      bgColor: 'bg-terminal-info/20',
+      borderColor: 'border-terminal-info/40',
+      description: 'Let\'s connect'
+    },
+    { 
+      name: 'Twitter', 
+      icon: FiTwitter, 
+      url: 'https://twitter.com/sumit', 
+      color: 'text-terminal-orange',
+      bgColor: 'bg-terminal-orange/20',
+      borderColor: 'border-terminal-orange/40',
+      description: 'Follow me'
+    }
   ];
 
   return (
-    <section className="section bg-terminal-gradient py-20">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="section bg-terminal-gradient py-20 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 opacity-5">
+          <div className="grid grid-cols-8 gap-4 h-full">
+            {Array.from({ length: 32 }).map((_, i) => (
+              <motion.div 
+                key={i} 
+                className="border border-terminal-orange/30"
+                animate={{ 
+                  opacity: [0.1, 0.3, 0.1],
+                }}
+                transition={{ duration: 4, repeat: Infinity, delay: i * 0.1 }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,8 +132,14 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
+                      onFocus={() => setFocusedField('name')}
+                      onBlur={() => setFocusedField(null)}
                       required
-                      className="w-full bg-terminal-gray border border-terminal-orange/30 text-terminal-white p-3 rounded focus:border-terminal-orange focus:outline-none transition-colors font-mono"
+                      className={`w-full bg-terminal-gray border transition-all duration-300 text-terminal-white p-4 rounded-lg focus:outline-none font-mono ${
+                        focusedField === 'name' 
+                          ? 'border-terminal-orange glow-orange-intense' 
+                          : 'border-terminal-orange/30 hover:border-terminal-orange/60'
+                      }`}
                       placeholder="'Your Name'"
                     />
                   </div>
@@ -96,8 +153,14 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
+                      onFocus={() => setFocusedField('email')}
+                      onBlur={() => setFocusedField(null)}
                       required
-                      className="w-full bg-terminal-gray border border-terminal-orange/30 text-terminal-white p-3 rounded focus:border-terminal-orange focus:outline-none transition-colors font-mono"
+                      className={`w-full bg-terminal-gray border transition-all duration-300 text-terminal-white p-4 rounded-lg focus:outline-none font-mono ${
+                        focusedField === 'email' 
+                          ? 'border-terminal-orange glow-orange-intense' 
+                          : 'border-terminal-orange/30 hover:border-terminal-orange/60'
+                      }`}
                       placeholder="'your.email@example.com'"
                     />
                   </div>
@@ -110,9 +173,15 @@ const Contact = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
+                      onFocus={() => setFocusedField('message')}
+                      onBlur={() => setFocusedField(null)}
                       required
                       rows={6}
-                      className="w-full bg-terminal-gray border border-terminal-orange/30 text-terminal-white p-3 rounded focus:border-terminal-orange focus:outline-none transition-colors font-mono resize-none"
+                      className={`w-full bg-terminal-gray border transition-all duration-300 text-terminal-white p-4 rounded-lg focus:outline-none font-mono resize-none ${
+                        focusedField === 'message' 
+                          ? 'border-terminal-orange glow-orange-intense' 
+                          : 'border-terminal-orange/30 hover:border-terminal-orange/60'
+                      }`}
                       placeholder="'Hello Sumit, I would like to...'"
                     />
                   </div>
@@ -120,27 +189,45 @@ const Contact = () => {
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full p-4 border-2 font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                    className={`w-full p-4 border-2 font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 rounded-lg ${
                       isSubmitting
                         ? 'bg-terminal-gray border-terminal-gray text-terminal-white/50 cursor-not-allowed'
-                        : 'bg-terminal-orange text-black border-terminal-orange hover:bg-transparent hover:text-terminal-orange hover-glow font-bold'
+                        : 'btn-primary'
                     }`}
                     whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                     whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                   >
-                    <FiSend className={isSubmitting ? 'animate-pulse' : ''} />
-                    {isSubmitting ? 'Sending...' : '[ Execute sendMessage() ]'}
+                    {isSubmitting ? (
+                      <>
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        >
+                          <FiSend />
+                        </motion.div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <FiSend />
+                        [ Execute sendMessage() ]
+                      </>
+                    )}
                   </motion.button>
 
-                  {submitStatus && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="text-terminal-success text-center p-3 bg-terminal-gray/30 rounded border border-terminal-success/30"
-                    >
-                      {submitStatus}
-                    </motion.div>
-                  )}
+                  <AnimatePresence>
+                    {submitStatus === 'success' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.9 }}
+                        className="text-terminal-success text-center p-4 bg-terminal-success/10 rounded-lg border border-terminal-success/30 flex items-center justify-center gap-2"
+                      >
+                        <FiCheck className="text-lg" />
+                        <span className="font-semibold">Message sent successfully! 🚀</span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </form>
               </div>
             </motion.div>
@@ -154,7 +241,7 @@ const Contact = () => {
               className="space-y-8"
             >
               {/* Contact Info */}
-              <div className="terminal-border">
+              <div className="terminal-border neumorphism">
                 <div className="terminal-header">
                   <div className="terminal-button terminal-red"></div>
                   <div className="terminal-button terminal-yellow"></div>
@@ -163,7 +250,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="p-6 space-y-4">
-                  <div className="text-terminal-white">
+                  <div className="text-terminal-white font-mono text-sm leading-relaxed">
                     <span className="text-terminal-orange">{`{`}</span><br/>
                     <span className="ml-4 text-terminal-orange-highlight">"status":</span> <span className="text-terminal-success">"Available for new opportunities"</span>,<br/>
                     <span className="ml-4 text-terminal-orange-highlight">"response_time":</span> <span className="text-terminal-success">"Usually within 24 hours"</span>,<br/>
@@ -175,7 +262,7 @@ const Contact = () => {
               </div>
 
               {/* Social Links */}
-              <div className="terminal-border">
+              <div className="terminal-border neumorphism">
                 <div className="terminal-header">
                   <div className="terminal-button terminal-red"></div>
                   <div className="terminal-button terminal-yellow"></div>
@@ -195,13 +282,18 @@ const Contact = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className={`flex items-center gap-4 p-3 border border-terminal-orange/30 hover:border-terminal-orange transition-all duration-300 group hover-glow ${social.color}`}
-                        whileHover={{ scale: 1.02 }}
+                        className={`flex items-center gap-4 p-4 border rounded-lg transition-all duration-300 group hover:scale-105 ${social.bgColor} ${social.borderColor} hover:${social.borderColor.replace('/40', '')} ${social.color}`}
+                        whileHover={{ y: -2 }}
                       >
-                        <social.icon size={24} className="group-hover:animate-pulse" />
+                        <motion.div
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <social.icon size={24} className="group-hover:drop-shadow-lg" />
+                        </motion.div>
                         <div>
-                          <div className="font-semibold">{social.name}</div>
-                          <div className="text-sm opacity-70">Click to connect</div>
+                          <div className="font-bold text-lg">{social.name}</div>
+                          <div className="text-sm opacity-80">{social.description}</div>
                         </div>
                       </motion.a>
                     ))}
@@ -210,26 +302,37 @@ const Contact = () => {
               </div>
 
               {/* Terminal Command */}
-              <div className="terminal-border bg-terminal-gray/20">
-                <div className="p-4">
-                  <div className="text-terminal-white space-y-2">
-                    <div>
-                      <span className="text-terminal-orange-highlight">sumit@dev</span>
+              <div className="terminal-border bg-terminal-gray/20 neumorphism">
+                <div className="p-6">
+                  <div className="text-terminal-white space-y-3 font-mono">
+                    <div className="flex items-center">
+                      <span className="text-terminal-orange-highlight font-bold">sumit@dev</span>
                       <span className="text-terminal-white">:</span>
                       <span className="text-terminal-info">~</span>
                       <span className="text-terminal-white">$ </span>
                       <span className="text-terminal-orange">echo</span>
-                      <span className="text-terminal-success"> "Let's build something amazing together!"</span>
+                      <span className="text-terminal-success ml-2">"Let's build something amazing together!"</span>
                     </div>
-                    <div className="ml-4 text-terminal-info">
-                      Let's build something amazing together!
-                    </div>
-                    <div>
-                      <span className="text-terminal-orange-highlight">sumit@dev</span>
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                      className="ml-4 text-terminal-info font-semibold"
+                    >
+                      Let's build something amazing together! ✨
+                    </motion.div>
+                    <div className="flex items-center">
+                      <span className="text-terminal-orange-highlight font-bold">sumit@dev</span>
                       <span className="text-terminal-white">:</span>
                       <span className="text-terminal-info">~</span>
                       <span className="text-terminal-white">$ </span>
-                      <span className="animate-blink text-terminal-orange">|</span>
+                      <motion.span 
+                        className="text-terminal-orange"
+                        animate={{ opacity: [1, 0, 1] }}
+                        transition={{ duration: 1, repeat: Infinity }}
+                      >
+                        |
+                      </motion.span>
                     </div>
                   </div>
                 </div>

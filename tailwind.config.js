@@ -63,6 +63,7 @@ export default {
       },
       backgroundImage: {
         'terminal-gradient': 'linear-gradient(145deg, #0d0d0d, #1a1a1a)',
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       }
     },
   },
