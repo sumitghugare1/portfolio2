@@ -8,7 +8,7 @@ const Skills = () => {
   const activeSkills = skills.find(category => category.category === activeCategory)?.items || [];
 
   return (
-    <section className="section bg-terminal-bg py-20">
+    <section className="section bg-terminal-gradient py-20">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -16,8 +16,8 @@ const Skills = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-terminal-green mb-12 text-center">
-            <span className="text-terminal-purple">$</span> cat skills.json
+          <h2 className="text-3xl md:text-4xl font-bold text-terminal-white mb-12 text-center">
+            <span className="text-terminal-orange">$</span> cat skills.json
           </h2>
 
           {/* Category Tabs */}
@@ -33,7 +33,7 @@ const Skills = () => {
                 <div className="terminal-button terminal-red"></div>
                 <div className="terminal-button terminal-yellow"></div>
                 <div className="terminal-button terminal-green"></div>
-                <span className="text-terminal-green text-sm">skills-navigator.js</span>
+                <span className="text-terminal-orange text-sm font-bold">skills-navigator.js</span>
               </div>
               <div className="p-4">
                 <div className="flex flex-wrap gap-2">
@@ -41,10 +41,10 @@ const Skills = () => {
                     <motion.button
                       key={category.category}
                       onClick={() => setActiveCategory(category.category)}
-                      className={`px-6 py-3 text-sm border transition-all duration-300 ${
+                      className={`px-6 py-3 text-sm border transition-all duration-300 font-mono ${
                         activeCategory === category.category
-                          ? 'bg-terminal-green text-terminal-bg border-terminal-green glow-green'
-                          : 'text-terminal-green border-terminal-green hover:border-terminal-purple hover:text-terminal-purple'
+                          ? 'bg-terminal-orange text-black border-terminal-orange glow-orange font-bold'
+                          : 'text-terminal-white border-terminal-orange hover:border-terminal-orange-highlight hover:text-terminal-orange-highlight'
                       }`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -77,20 +77,20 @@ const Skills = () => {
                   <div className="terminal-button terminal-red"></div>
                   <div className="terminal-button terminal-yellow"></div>
                   <div className="terminal-button terminal-green"></div>
-                  <span className="text-terminal-green text-xs">{skill.name.toLowerCase().replace(/\./g, '')}</span>
+                  <span className="text-terminal-orange text-xs font-bold">{skill.name.toLowerCase().replace(/\./g, '')}</span>
                 </div>
                 
                 <div className="p-6 text-center">
                   <div className="text-4xl mb-3">{skill.icon}</div>
-                  <h3 className="text-lg font-semibold text-terminal-green mb-3">
+                  <h3 className="text-lg font-semibold text-terminal-white mb-3">
                     {skill.name}
                   </h3>
                   
                   {/* Progress Bar */}
                   <div className="mb-2">
-                    <div className="flex justify-between text-xs text-terminal-green/60 mb-1">
+                    <div className="flex justify-between text-xs text-terminal-white-muted mb-1">
                       <span>Proficiency</span>
-                      <span>{skill.level}%</span>
+                      <span className="text-terminal-orange font-bold">{skill.level}%</span>
                     </div>
                     <div className="w-full bg-terminal-gray h-2 rounded">
                       <motion.div
@@ -98,12 +98,12 @@ const Skills = () => {
                         whileInView={{ width: `${skill.level}%` }}
                         transition={{ duration: 1, delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className="h-full bg-gradient-to-r from-terminal-green to-terminal-purple rounded"
+                        className="h-full bg-gradient-to-r from-terminal-orange to-terminal-orange-highlight rounded"
                       />
                     </div>
                   </div>
                   
-                  <div className="text-terminal-green/60 text-xs font-mono">
+                  <div className="text-terminal-orange-highlight text-xs font-mono font-bold">
                     {skill.level >= 90 ? 'Expert' : 
                      skill.level >= 80 ? 'Advanced' : 
                      skill.level >= 70 ? 'Intermediate' : 'Learning'}
@@ -122,22 +122,22 @@ const Skills = () => {
             className="mt-12 terminal-border p-6 bg-terminal-gray/20"
           >
             <div className="space-y-2">
-              <div className="text-terminal-green">
-                <span className="text-terminal-purple">sumit@dev</span>
-                <span className="text-terminal-green">:</span>
-                <span className="text-terminal-cyan">~/skills</span>
-                <span className="text-terminal-green">$ </span>
+              <div className="text-terminal-white">
+                <span className="text-terminal-orange-highlight">sumit@dev</span>
+                <span className="text-terminal-white">:</span>
+                <span className="text-terminal-info">~/skills</span>
+                <span className="text-terminal-white">$ </span>
                 <span className="text-terminal-orange">npm run --version</span>
               </div>
-              <div className="ml-4 text-terminal-green/80">
+              <div className="ml-4 text-terminal-success">
                 Developer v3.0.0 - Always learning, always growing! 🚀
               </div>
-              <div className="text-terminal-green">
-                <span className="text-terminal-purple">sumit@dev</span>
-                <span className="text-terminal-green">:</span>
-                <span className="text-terminal-cyan">~/skills</span>
-                <span className="text-terminal-green">$ </span>
-                <span className="animate-blink">|</span>
+              <div className="text-terminal-white">
+                <span className="text-terminal-orange-highlight">sumit@dev</span>
+                <span className="text-terminal-white">:</span>
+                <span className="text-terminal-info">~/skills</span>
+                <span className="text-terminal-white">$ </span>
+                <span className="animate-blink text-terminal-orange">|</span>
               </div>
             </div>
           </motion.div>

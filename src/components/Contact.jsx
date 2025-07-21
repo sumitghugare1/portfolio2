@@ -35,14 +35,14 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { name: 'Email', icon: FiMail, url: 'mailto:sumit@example.com', color: 'text-terminal-green' },
-    { name: 'GitHub', icon: FiGithub, url: 'https://github.com/sumit', color: 'text-terminal-purple' },
-    { name: 'LinkedIn', icon: FiLinkedin, url: 'https://linkedin.com/in/sumit', color: 'text-terminal-cyan' },
+    { name: 'Email', icon: FiMail, url: 'mailto:sumit@example.com', color: 'text-terminal-success' },
+    { name: 'GitHub', icon: FiGithub, url: 'https://github.com/sumit', color: 'text-terminal-orange-highlight' },
+    { name: 'LinkedIn', icon: FiLinkedin, url: 'https://linkedin.com/in/sumit', color: 'text-terminal-info' },
     { name: 'Twitter', icon: FiTwitter, url: 'https://twitter.com/sumit', color: 'text-terminal-orange' }
   ];
 
   return (
-    <section className="section bg-terminal-bg py-20">
+    <section className="section bg-terminal-gradient py-20">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -50,8 +50,8 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-terminal-green mb-12 text-center">
-            <span className="text-terminal-purple">$</span> ./contact.sh
+          <h2 className="text-3xl md:text-4xl font-bold text-terminal-white mb-12 text-center">
+            <span className="text-terminal-orange">$</span> ./contact.sh
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -67,14 +67,14 @@ const Contact = () => {
                 <div className="terminal-button terminal-red"></div>
                 <div className="terminal-button terminal-yellow"></div>
                 <div className="terminal-button terminal-green"></div>
-                <span className="text-terminal-green text-sm">send-message.js</span>
+                <span className="text-terminal-orange text-sm font-bold">send-message.js</span>
               </div>
               
               <div className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-terminal-green text-sm mb-2">
-                      <span className="text-terminal-purple">const</span> name = 
+                    <label className="block text-terminal-white text-sm mb-2">
+                      <span className="text-terminal-orange">const</span> name = 
                     </label>
                     <input
                       type="text"
@@ -82,14 +82,14 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full bg-terminal-gray border border-terminal-green/30 text-terminal-green p-3 rounded focus:border-terminal-green focus:outline-none transition-colors font-mono"
+                      className="w-full bg-terminal-gray border border-terminal-orange/30 text-terminal-white p-3 rounded focus:border-terminal-orange focus:outline-none transition-colors font-mono"
                       placeholder="'Your Name'"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-terminal-green text-sm mb-2">
-                      <span className="text-terminal-purple">const</span> email = 
+                    <label className="block text-terminal-white text-sm mb-2">
+                      <span className="text-terminal-orange">const</span> email = 
                     </label>
                     <input
                       type="email"
@@ -97,14 +97,14 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-terminal-gray border border-terminal-green/30 text-terminal-green p-3 rounded focus:border-terminal-green focus:outline-none transition-colors font-mono"
+                      className="w-full bg-terminal-gray border border-terminal-orange/30 text-terminal-white p-3 rounded focus:border-terminal-orange focus:outline-none transition-colors font-mono"
                       placeholder="'your.email@example.com'"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-terminal-green text-sm mb-2">
-                      <span className="text-terminal-purple">const</span> message = 
+                    <label className="block text-terminal-white text-sm mb-2">
+                      <span className="text-terminal-orange">const</span> message = 
                     </label>
                     <textarea
                       name="message"
@@ -112,7 +112,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="w-full bg-terminal-gray border border-terminal-green/30 text-terminal-green p-3 rounded focus:border-terminal-green focus:outline-none transition-colors font-mono resize-none"
+                      className="w-full bg-terminal-gray border border-terminal-orange/30 text-terminal-white p-3 rounded focus:border-terminal-orange focus:outline-none transition-colors font-mono resize-none"
                       placeholder="'Hello Sumit, I would like to...'"
                     />
                   </div>
@@ -122,8 +122,8 @@ const Contact = () => {
                     disabled={isSubmitting}
                     className={`w-full p-4 border-2 font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
                       isSubmitting
-                        ? 'bg-terminal-gray border-terminal-gray text-terminal-green/50 cursor-not-allowed'
-                        : 'bg-terminal-green text-terminal-bg border-terminal-green hover:bg-transparent hover:text-terminal-green hover-glow'
+                        ? 'bg-terminal-gray border-terminal-gray text-terminal-white/50 cursor-not-allowed'
+                        : 'bg-terminal-orange text-black border-terminal-orange hover:bg-transparent hover:text-terminal-orange hover-glow font-bold'
                     }`}
                     whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                     whileTap={!isSubmitting ? { scale: 0.98 } : {}}
@@ -136,7 +136,7 @@ const Contact = () => {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-terminal-green text-center p-3 bg-terminal-gray/30 rounded border border-terminal-green/30"
+                      className="text-terminal-success text-center p-3 bg-terminal-gray/30 rounded border border-terminal-success/30"
                     >
                       {submitStatus}
                     </motion.div>
@@ -159,16 +159,16 @@ const Contact = () => {
                   <div className="terminal-button terminal-red"></div>
                   <div className="terminal-button terminal-yellow"></div>
                   <div className="terminal-button terminal-green"></div>
-                  <span className="text-terminal-green text-sm">contact-info.json</span>
+                  <span className="text-terminal-orange text-sm font-bold">contact-info.json</span>
                 </div>
                 
                 <div className="p-6 space-y-4">
-                  <div className="text-terminal-green">
+                  <div className="text-terminal-white">
                     <span className="text-terminal-orange">{`{`}</span><br/>
-                    <span className="ml-4 text-terminal-purple">"status":</span> <span className="text-terminal-green">"Available for new opportunities"</span>,<br/>
-                    <span className="ml-4 text-terminal-purple">"response_time":</span> <span className="text-terminal-green">"Usually within 24 hours"</span>,<br/>
-                    <span className="ml-4 text-terminal-purple">"location":</span> <span className="text-terminal-green">"Remote / Hybrid"</span>,<br/>
-                    <span className="ml-4 text-terminal-purple">"interests":</span> <span className="text-terminal-green">["Frontend", "UI/UX", "Open Source"]</span><br/>
+                    <span className="ml-4 text-terminal-orange-highlight">"status":</span> <span className="text-terminal-success">"Available for new opportunities"</span>,<br/>
+                    <span className="ml-4 text-terminal-orange-highlight">"response_time":</span> <span className="text-terminal-success">"Usually within 24 hours"</span>,<br/>
+                    <span className="ml-4 text-terminal-orange-highlight">"location":</span> <span className="text-terminal-success">"Remote / Hybrid"</span>,<br/>
+                    <span className="ml-4 text-terminal-orange-highlight">"interests":</span> <span className="text-terminal-success">["Frontend", "UI/UX", "Open Source"]</span><br/>
                     <span className="text-terminal-orange">{`}`}</span>
                   </div>
                 </div>
@@ -180,7 +180,7 @@ const Contact = () => {
                   <div className="terminal-button terminal-red"></div>
                   <div className="terminal-button terminal-yellow"></div>
                   <div className="terminal-button terminal-green"></div>
-                  <span className="text-terminal-green text-sm">social-links.sh</span>
+                  <span className="text-terminal-orange text-sm font-bold">social-links.sh</span>
                 </div>
                 
                 <div className="p-6">
@@ -195,7 +195,7 @@ const Contact = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className={`flex items-center gap-4 p-3 border border-terminal-green/30 hover:border-terminal-green transition-all duration-300 group hover-glow ${social.color}`}
+                        className={`flex items-center gap-4 p-3 border border-terminal-orange/30 hover:border-terminal-orange transition-all duration-300 group hover-glow ${social.color}`}
                         whileHover={{ scale: 1.02 }}
                       >
                         <social.icon size={24} className="group-hover:animate-pulse" />
@@ -212,24 +212,24 @@ const Contact = () => {
               {/* Terminal Command */}
               <div className="terminal-border bg-terminal-gray/20">
                 <div className="p-4">
-                  <div className="text-terminal-green space-y-2">
+                  <div className="text-terminal-white space-y-2">
                     <div>
-                      <span className="text-terminal-purple">sumit@dev</span>
-                      <span className="text-terminal-green">:</span>
-                      <span className="text-terminal-cyan">~</span>
-                      <span className="text-terminal-green">$ </span>
+                      <span className="text-terminal-orange-highlight">sumit@dev</span>
+                      <span className="text-terminal-white">:</span>
+                      <span className="text-terminal-info">~</span>
+                      <span className="text-terminal-white">$ </span>
                       <span className="text-terminal-orange">echo</span>
-                      <span className="text-terminal-green"> "Let's build something amazing together!"</span>
+                      <span className="text-terminal-success"> "Let's build something amazing together!"</span>
                     </div>
-                    <div className="ml-4 text-terminal-cyan">
+                    <div className="ml-4 text-terminal-info">
                       Let's build something amazing together!
                     </div>
                     <div>
-                      <span className="text-terminal-purple">sumit@dev</span>
-                      <span className="text-terminal-green">:</span>
-                      <span className="text-terminal-cyan">~</span>
-                      <span className="text-terminal-green">$ </span>
-                      <span className="animate-blink">|</span>
+                      <span className="text-terminal-orange-highlight">sumit@dev</span>
+                      <span className="text-terminal-white">:</span>
+                      <span className="text-terminal-info">~</span>
+                      <span className="text-terminal-white">$ </span>
+                      <span className="animate-blink text-terminal-orange">|</span>
                     </div>
                   </div>
                 </div>

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section className="section bg-terminal-bg py-20">
+    <section className="section bg-terminal-gradient py-20">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -11,8 +11,8 @@ const About = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-terminal-green mb-12 text-center">
-            <span className="text-terminal-purple">$</span> cat about.txt
+          <h2 className="text-3xl md:text-4xl font-bold text-terminal-white mb-12 text-center">
+            <span className="text-terminal-orange">$</span> cat about.txt
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -28,19 +28,19 @@ const About = () => {
                 <div className="terminal-button terminal-red"></div>
                 <div className="terminal-button terminal-yellow"></div>
                 <div className="terminal-button terminal-green"></div>
-                <span className="text-terminal-green text-sm">profile.jpg</span>
+                <span className="text-terminal-orange text-sm font-bold">profile.jpg</span>
               </div>
               <div className="p-6 text-center">
-                <div className="w-48 h-48 mx-auto mb-4 border-2 border-terminal-green rounded-lg bg-terminal-gray/30 flex items-center justify-center overflow-hidden">
+                <div className="w-48 h-48 mx-auto mb-4 border-2 border-terminal-orange rounded-lg bg-terminal-gray/30 flex items-center justify-center overflow-hidden glow-orange">
                   {/* Replace with actual image */}
-                  <div className="text-terminal-green text-6xl">
+                  <div className="text-terminal-orange text-6xl">
                     👨‍💻
                   </div>
                 </div>
-                <div className="text-terminal-green font-mono">
-                  <span className="text-terminal-purple">Status:</span> Online 🟢<br/>
-                  <span className="text-terminal-purple">Location:</span> Earth 🌍<br/>
-                  <span className="text-terminal-purple">Mode:</span> Coding
+                <div className="text-terminal-white font-mono">
+                  <span className="text-terminal-orange-highlight">Status:</span> <span className="text-terminal-success">Online 🟢</span><br/>
+                  <span className="text-terminal-orange-highlight">Location:</span> <span className="text-terminal-info">Earth 🌍</span><br/>
+                  <span className="text-terminal-orange-highlight">Mode:</span> <span className="text-terminal-orange">Coding</span>
                 </div>
               </div>
             </motion.div>
@@ -57,56 +57,56 @@ const About = () => {
                 <div className="terminal-button terminal-red"></div>
                 <div className="terminal-button terminal-yellow"></div>
                 <div className="terminal-button terminal-green"></div>
-                <span className="text-terminal-green text-sm">about-me.sh</span>
+                <span className="text-terminal-orange text-sm font-bold">about-me.sh</span>
               </div>
               <div className="p-6 space-y-4">
                 <div className="space-y-3">
-                  <div className="text-terminal-green">
-                    <span className="text-terminal-purple">sumit@dev</span>
-                    <span className="text-terminal-green">:</span>
-                    <span className="text-terminal-cyan">~</span>
-                    <span className="text-terminal-green">$ </span>
+                  <div className="text-terminal-white">
+                    <span className="text-terminal-orange-highlight">sumit@dev</span>
+                    <span className="text-terminal-white">:</span>
+                    <span className="text-terminal-info">~</span>
+                    <span className="text-terminal-white">$ </span>
                     <span className="text-terminal-orange">whoami</span>
                   </div>
                   
-                  <div className="ml-4 text-terminal-green/90">
+                  <div className="ml-4 text-terminal-white-muted">
                     Frontend Developer & UI/UX Enthusiast with 3+ years of experience crafting beautiful, responsive web applications.
                   </div>
 
-                  <div className="text-terminal-green">
-                    <span className="text-terminal-purple">sumit@dev</span>
-                    <span className="text-terminal-green">:</span>
-                    <span className="text-terminal-cyan">~</span>
-                    <span className="text-terminal-green">$ </span>
+                  <div className="text-terminal-white">
+                    <span className="text-terminal-orange-highlight">sumit@dev</span>
+                    <span className="text-terminal-white">:</span>
+                    <span className="text-terminal-info">~</span>
+                    <span className="text-terminal-white">$ </span>
                     <span className="text-terminal-orange">cat skills.txt</span>
                   </div>
                   
-                  <div className="ml-4 text-terminal-green/90">
-                    • React.js & TypeScript Expert<br/>
-                    • Modern CSS & TailwindCSS<br/>
-                    • Node.js & Express<br/>
-                    • Database Design (MongoDB, PostgreSQL)<br/>
-                    • UI/UX Design & Prototyping
+                  <div className="ml-4 text-terminal-white-muted">
+                    • <span className="text-terminal-success">React.js & TypeScript Expert</span><br/>
+                    • <span className="text-terminal-success">Modern CSS & TailwindCSS</span><br/>
+                    • <span className="text-terminal-success">Node.js & Express</span><br/>
+                    • <span className="text-terminal-success">Database Design (MongoDB, PostgreSQL)</span><br/>
+                    • <span className="text-terminal-success">UI/UX Design & Prototyping</span>
                   </div>
 
-                  <div className="text-terminal-green">
-                    <span className="text-terminal-purple">sumit@dev</span>
-                    <span className="text-terminal-green">:</span>
-                    <span className="text-terminal-cyan">~</span>
-                    <span className="text-terminal-green">$ </span>
+                  <div className="text-terminal-white">
+                    <span className="text-terminal-orange-highlight">sumit@dev</span>
+                    <span className="text-terminal-white">:</span>
+                    <span className="text-terminal-info">~</span>
+                    <span className="text-terminal-white">$ </span>
                     <span className="text-terminal-orange">echo $PASSION</span>
                   </div>
                   
-                  <div className="ml-4 text-terminal-cyan">
+                  <div className="ml-4 text-terminal-info neon-text">
                     "Building digital experiences that make a difference"
                   </div>
 
                   <div className="flex items-center">
-                    <span className="text-terminal-purple">sumit@dev</span>
-                    <span className="text-terminal-green">:</span>
-                    <span className="text-terminal-cyan">~</span>
-                    <span className="text-terminal-green">$ </span>
-                    <span className="animate-blink">|</span>
+                    <span className="text-terminal-orange-highlight">sumit@dev</span>
+                    <span className="text-terminal-white">:</span>
+                    <span className="text-terminal-info">~</span>
+                    <span className="text-terminal-white">$ </span>
+                    <span className="animate-blink text-terminal-orange">|</span>
                   </div>
                 </div>
               </div>
