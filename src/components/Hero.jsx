@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 import Terminal from './Terminal';
-import { FiArrowDown, FiPlay, FiCode, FiStar } from 'react-icons/fi';
+import { FiPlay, FiCode, FiStar } from 'react-icons/fi';
 
 const Hero = () => {
   const [showTerminal, setShowTerminal] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -32,61 +22,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="flex items-center justify-center min-h-screen bg-terminal-gradient relative overflow-hidden pt-16 px-4">
-      {/* Dynamic Background */}
-      <div className="absolute inset-0">
-        {/* Animated Grid */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="grid grid-cols-6 md:grid-cols-12 gap-2 md:gap-4 h-full">
-            {Array.from({ length: window.innerWidth < 768 ? 24 : 48 }).map((_, i) => (
-              <motion.div 
-                key={i} 
-                className="border border-terminal-orange/30"
-                animate={{ 
-                  opacity: [0.1, 0.3, 0.1],
-                  borderColor: ['rgba(255, 119, 51, 0.3)', 'rgba(255, 76, 41, 0.5)', 'rgba(255, 119, 51, 0.3)']
-                }}
-                transition={{ duration: 4, repeat: Infinity, delay: i * 0.1 }}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Floating Code Snippets - Reduced on mobile */}
-        {Array.from({ length: window.innerWidth < 768 ? 8 : 15 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-terminal-orange/20 font-mono text-xs"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -50, 0],
-              opacity: [0, 0.5, 0],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 4,
-            }}
-          >
-            {['const', 'function', 'return', 'import', 'export', 'async', 'await', '{', '}', '()', '=>'][Math.floor(Math.random() * 11)]}
-          </motion.div>
-        ))}
-
-        {/* Mouse Follower Effect */}
-        <motion.div
-          className="absolute w-96 h-96 rounded-full bg-terminal-orange/5 blur-3xl"
-          animate={{
-            x: mousePosition.x - 192,
-            y: mousePosition.y - 192,
-          }}
-          transition={{ type: "spring", stiffness: 50, damping: 30 }}
-        />
-      </div>
-
+    <section className="flex items-center justify-center min-h-screen relative overflow-hidden pt-28 pb-16 px-4">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10 py-8">
         {/* Left Side - Content */}
         <motion.div 
@@ -153,9 +89,8 @@ const Hero = () => {
               </div>
               <div className="font-mono text-xs leading-relaxed">
                 <div className="text-terminal-orange">const <span className="text-terminal-white">developer</span> = {`{`}</div>
-                <div className="ml-3 text-terminal-orange">name: <span className="text-terminal-white">'Sumit'</span>,</div>
-                <div className="ml-3 text-terminal-orange">role: <span className="text-terminal-white">'Frontend Specialist'</span>,</div>
-                <div className="ml-3 text-terminal-orange">skills: <span className="text-terminal-white">['React', 'TypeScript', 'Node.js']</span>,</div>
+                <div className="ml-3 text-terminal-orange">name: <span className="text-terminal-white">'Sumit Ghugare'</span>,</div>
+                <div className="ml-3 text-terminal-orange">role: <span className="text-terminal-white">'Full Stack Developer'</span>,</div>
                 <div className="ml-3 text-terminal-orange">passionate_about: <span className="text-terminal-white">'Clean Code & Great UX'</span>,</div>
                 <div className="ml-3 text-terminal-orange">status: <span className="text-terminal-white">'Available for opportunities'</span></div>
                 <div className="text-terminal-orange">{`}`};</div>
@@ -283,30 +218,6 @@ const Hero = () => {
           </AnimatePresence>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 z-50"
-      >
-        <motion.button
-          onClick={() => scrollToSection('about')}
-          className="flex flex-col items-center gap-1 text-terminal-orange hover:text-terminal-orange-highlight transition-colors group backdrop-blur-sm bg-black/20 p-2 rounded-lg"
-          whileHover={{ y: -3 }}
-        >
-          <span className="text-xs font-mono hidden sm:block">Scroll to explore</span>
-          <span className="text-xs font-mono sm:hidden">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="p-1.5 border border-terminal-orange/50 rounded-full group-hover:border-terminal-orange group-hover:bg-terminal-orange/10"
-          >
-            <FiArrowDown size={16} />
-          </motion.div>
-        </motion.button>
-      </motion.div>
 
       {/* Floating Elements */}
       <div className="absolute top-16 right-16 hidden xl:block">

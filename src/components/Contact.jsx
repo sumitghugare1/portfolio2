@@ -39,7 +39,7 @@ const Contact = () => {
     { 
       name: 'Email', 
       icon: FiMail, 
-      url: 'mailto:sumit@example.com', 
+      url: 'mailto:sumitghugare3@fmail.com', 
       color: 'text-terminal-orange',
       bgColor: 'bg-terminal-orange/20',
       borderColor: 'border-terminal-orange/40',
@@ -48,7 +48,7 @@ const Contact = () => {
     { 
       name: 'GitHub', 
       icon: FiGithub, 
-      url: 'https://github.com/sumit', 
+      url: 'https://github.com/sumitghugare1', 
       color: 'text-white',
       bgColor: 'bg-white/10',
       borderColor: 'border-white/40',
@@ -57,7 +57,7 @@ const Contact = () => {
     { 
       name: 'LinkedIn', 
       icon: FiLinkedin, 
-      url: 'https://linkedin.com/in/sumit', 
+      url: 'https://www.linkedin.com/in/sumit-ghugare-30200024a/', 
       color: 'text-terminal-blue',
       bgColor: 'bg-terminal-blue/20',
       borderColor: 'border-terminal-blue/40',
@@ -66,7 +66,7 @@ const Contact = () => {
     { 
       name: 'Twitter', 
       icon: FiTwitter, 
-      url: 'https://twitter.com/sumit', 
+      url: 'https://x.com/SumitGhugare3?t=Rp9d6xQBjY0BDNNYSvRjhA&s=09', 
       color: 'text-white',
       bgColor: 'bg-white/10',
       borderColor: 'border-white/40',
@@ -75,25 +75,7 @@ const Contact = () => {
   ];
 
   return (
-    <section className="section bg-terminal-gradient py-20 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-5">
-          <div className="grid grid-cols-8 gap-4 h-full">
-            {Array.from({ length: 32 }).map((_, i) => (
-              <motion.div 
-                key={i} 
-                className="border border-terminal-orange/30"
-                animate={{ 
-                  opacity: [0.1, 0.3, 0.1],
-                }}
-                transition={{ duration: 4, repeat: Infinity, delay: i * 0.1 }}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
+    <section className="section py-20">
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

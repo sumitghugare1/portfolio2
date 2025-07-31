@@ -125,19 +125,44 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Resume Download Button */}
-            <motion.button
-              onClick={downloadResume}
-              className="btn-blue px-3 sm:px-4 py-2 text-xs sm:text-sm font-mono flex items-center gap-1 sm:gap-2 rounded-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            {/* Enhanced Resume Download Button */}
+            <motion.div
+              className="terminal-border bg-terminal-gray/30 backdrop-blur-md"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <FiDownload size={14} />
-              <span className="hidden sm:inline">CV</span>
-            </motion.button>
+              <div className="terminal-header py-1">
+                <div className="terminal-button terminal-blue"></div>
+                <div className="terminal-button terminal-yellow"></div>
+                <div className="terminal-button terminal-green"></div>
+                <span className="text-terminal-blue text-xs font-bold ml-2">resume.pdf</span>
+              </div>
+              <motion.button
+                onClick={downloadResume}
+                className="group relative px-4 py-2 text-sm font-mono transition-all duration-300 border border-transparent rounded-md bg-terminal-blue text-black hover:bg-transparent hover:text-terminal-blue hover:border-terminal-blue w-full"
+                whileHover={{ scale: 1.05, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    className="group-hover:animate-bounce"
+                  >
+                    <FiDownload size={14} />
+                  </motion.div>
+                  <span className="font-bold">[ Download CV ]</span>
+                </div>
+                
+                {/* Hover effect */}
+                <motion.div
+                  className="absolute inset-0 bg-terminal-blue/20 rounded-md border border-terminal-blue opacity-0 group-hover:opacity-100"
+                  initial={false}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.button>
+            </motion.div>
 
             {/* Mobile Menu Button */}
             <motion.button
@@ -193,7 +218,7 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 h-full w-80 bg-terminal-gradient border-l border-terminal-orange/30 z-50 lg:hidden"
+              className="fixed top-0 right-0 h-full w-80 bg-terminal-bg border-l border-terminal-orange/30 z-50 lg:hidden"
             >
               <div className="p-6">
                 {/* Mobile Menu Header */}
@@ -235,22 +260,41 @@ const Navbar = () => {
                     </motion.button>
                   ))}
 
-                  {/* Resume Download Button in Mobile Menu */}
-                  <motion.button
-                    onClick={downloadResume}
-                    className="w-full flex items-center gap-4 p-4 text-left rounded-lg border border-terminal-blue/30 hover:border-terminal-blue hover:bg-terminal-blue/10 text-white transition-all duration-300"
+                  {/* Enhanced Resume Download Button in Mobile Menu */}
+                  <motion.div
+                    className="terminal-border bg-terminal-gray/20"
                     initial={{ x: 50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: navItems.length * 0.1 }}
-                    whileHover={{ x: 10 }}
-                    whileTap={{ scale: 0.95 }}
                   >
-                    <span className="text-2xl"><FiDownload /></span>
-                    <div>
-                      <div className="font-bold">View Resume</div>
-                      <div className="text-sm opacity-70">Open my CV in new tab</div>
+                    <div className="terminal-header">
+                      <div className="terminal-button terminal-blue"></div>
+                      <div className="terminal-button terminal-yellow"></div>
+                      <div className="terminal-button terminal-green"></div>
+                      <span className="text-terminal-blue text-sm font-bold">resume.pdf</span>
                     </div>
-                  </motion.button>
+                    <motion.button
+                      onClick={downloadResume}
+                      className="group w-full flex items-center gap-4 p-4 text-left transition-all duration-300 bg-terminal-blue/20 hover:bg-terminal-blue/30 border-2 border-terminal-blue/50 hover:border-terminal-blue text-white"
+                      whileHover={{ x: 10, scale: 1.02 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <motion.div
+                        className="text-2xl p-2 bg-terminal-blue/30 rounded-lg group-hover:bg-terminal-blue/50"
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <FiDownload />
+                      </motion.div>
+                      <div className="flex-1">
+                        <div className="font-bold text-terminal-blue group-hover:text-white">Download Resume</div>
+                        <div className="text-sm opacity-70 font-mono">$ wget sumit-cv.pdf</div>
+                      </div>
+                      <div className="text-terminal-blue opacity-50 group-hover:opacity-100">
+                        →
+                      </div>
+                    </motion.button>
+                  </motion.div>
                 </div>
 
                 {/* Mobile Terminal Footer */}

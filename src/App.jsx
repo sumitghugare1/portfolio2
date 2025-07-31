@@ -8,23 +8,25 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <div className="bg-gradient-to-br from-terminal-bg to-terminal-bg-secondary text-terminal-white font-mono min-h-screen">
+    <div className="bg-terminal-gradient text-terminal-white font-mono min-h-screen">
       <Navbar />
-      <div id="home">
-        <Hero />
-      </div>
-      <div id="about">
-        <About />
-      </div>
-      <div id="projects">
-        <Projects />
-      </div>
-      <div id="skills">
-        <Skills />
-      </div>
-      <div id="contact">
-        <Contact />
-      </div>
+      <main>
+        <div id="home">
+          <Hero />
+        </div>
+        <div id="about">
+          <About />
+        </div>
+        <div id="projects">
+          <Projects />
+        </div>
+        <div id="skills">
+          <Skills />
+        </div>
+        <div id="contact">
+          <Contact />
+        </div>
+      </main>
     </div>
   );
 }
