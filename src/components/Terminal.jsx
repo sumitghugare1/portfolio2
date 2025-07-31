@@ -60,18 +60,20 @@ const Terminal = () => {
 
   const getTextColor = (status) => {
     switch(status) {
-      case 'success': return 'text-terminal-success';
-      case 'warning': return 'text-terminal-warning';
-      case 'info': return 'text-terminal-info';
-      default: return 'text-terminal-white';
+      case 'success': return 'text-terminal-orange';
+      case 'warning': return 'text-terminal-orange';
+      case 'info': return 'text-terminal-blue';
+      case 'system': return 'text-white';
+      default: return 'text-white';
     }
   };
 
   const getGlowColor = (status) => {
     switch(status) {
-      case 'success': return 'drop-shadow-[0_0_8px_rgba(0,255,136,0.6)]';
+      case 'success': return 'drop-shadow-[0_0_8px_rgba(255,119,51,0.6)]';
       case 'warning': return 'drop-shadow-[0_0_8px_rgba(255,119,51,0.6)]';
-      case 'info': return 'drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]';
+      case 'info': return 'drop-shadow-[0_0_8px_rgba(14,165,233,0.6)]';
+      case 'system': return 'drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]';
       default: return '';
     }
   };
@@ -81,7 +83,7 @@ const Terminal = () => {
       initial={{ opacity: 0, scale: 0.9, rotateX: -15 }}
       animate={{ opacity: 1, scale: 1, rotateX: 0 }}
       transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-      className="terminal-border w-full max-w-lg h-96 overflow-hidden relative group"
+      className="terminal-border w-full max-w-lg h-72 sm:h-80 md:h-96 overflow-hidden relative group"
       style={{
         background: 'linear-gradient(145deg, #1a1a1a, #0d0d0d)',
         boxShadow: '0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,119,51,0.1)'
@@ -107,7 +109,7 @@ const Terminal = () => {
           />
         </div>
         <div className="flex-1 text-center">
-          <span className="text-terminal-orange text-sm font-bold">sumit@portfolio:~$</span>
+          <span className="text-terminal-orange text-xs sm:text-sm font-bold">sumit@portfolio:~$</span>
         </div>
         <div className="w-16 flex justify-end">
           <motion.div
@@ -119,10 +121,10 @@ const Terminal = () => {
       </div>
       
       {/* Terminal Content */}
-      <div className="p-6 h-full overflow-y-auto scrollbar-hide bg-gradient-to-b from-terminal-bg to-terminal-bg-secondary relative">
+      <div className="p-3 sm:p-6 h-full overflow-y-auto scrollbar-hide bg-gradient-to-b from-terminal-bg to-terminal-bg-secondary relative">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="grid grid-cols-8 gap-2 h-full">
+          <div className="grid grid-cols-6 sm:grid-cols-8 gap-1 sm:gap-2 h-full">
             {Array.from({ length: 32 }).map((_, i) => (
               <motion.div
                 key={i}
@@ -139,7 +141,7 @@ const Terminal = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-terminal-info text-sm mb-4"
+            className="text-white text-xs sm:text-sm mb-4"
           >
             Welcome to Sumit's Interactive Terminal 🎉
           </motion.div>
@@ -161,21 +163,21 @@ const Terminal = () => {
                 }}
                 className={`${
                   index === currentCommandIndex 
-                    ? 'text-terminal-white' 
-                    : 'text-terminal-white/60'
+                    ? 'text-white' 
+                    : 'text-white/60'
                 } transition-all duration-300`}
               >
                 {/* Command Line */}
                 <div className="flex items-center gap-1 mb-2">
                   <motion.span 
-                    className="text-terminal-orange-highlight font-bold"
+                    className="text-terminal-orange font-bold"
                     animate={index === currentCommandIndex ? { textShadow: ['0 0 0px #FF4C29', '0 0 8px #FF4C29', '0 0 0px #FF4C29'] } : {}}
                     transition={{ duration: 1, repeat: Infinity }}
                   >
                     sumit@dev
                   </motion.span>
-                  <span className="text-terminal-white">:</span>
-                  <span className="text-terminal-info font-semibold">~</span>
+                  <span className="text-white">:</span>
+                  <span className="text-white font-semibold">~</span>
                   <span className="text-terminal-orange">$ </span>
                   {index === currentCommandIndex ? (
                     <span className="text-terminal-white font-mono">
@@ -221,9 +223,9 @@ const Terminal = () => {
             animate={{ opacity: [1, 0.7, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <span className="text-terminal-orange-highlight font-bold">sumit@dev</span>
+            <span className="text-terminal-orange font-bold">sumit@dev</span>
             <span className="text-terminal-white">:</span>
-            <span className="text-terminal-info font-semibold">~</span>
+            <span className="text-terminal-white font-semibold">~</span>
             <span className="text-terminal-orange">$ </span>
             <motion.span 
               className="text-terminal-orange text-lg"

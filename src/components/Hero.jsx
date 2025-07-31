@@ -32,13 +32,13 @@ const Hero = () => {
   ];
 
   return (
-    <section className="flex items-center justify-center min-h-screen bg-terminal-gradient relative overflow-hidden pt-16">
+    <section className="flex items-center justify-center min-h-screen bg-terminal-gradient relative overflow-hidden pt-16 px-4">
       {/* Dynamic Background */}
       <div className="absolute inset-0">
         {/* Animated Grid */}
         <div className="absolute inset-0 opacity-10">
-          <div className="grid grid-cols-12 gap-4 h-full">
-            {Array.from({ length: 48 }).map((_, i) => (
+          <div className="grid grid-cols-6 md:grid-cols-12 gap-2 md:gap-4 h-full">
+            {Array.from({ length: window.innerWidth < 768 ? 24 : 48 }).map((_, i) => (
               <motion.div 
                 key={i} 
                 className="border border-terminal-orange/30"
@@ -52,8 +52,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Floating Code Snippets */}
-        {Array.from({ length: 15 }).map((_, i) => (
+        {/* Floating Code Snippets - Reduced on mobile */}
+        {Array.from({ length: window.innerWidth < 768 ? 8 : 15 }).map((_, i) => (
           <motion.div
             key={i}
             className="absolute text-terminal-orange/20 font-mono text-xs"
@@ -87,13 +87,13 @@ const Hero = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10 py-8">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10 py-8">
         {/* Left Side - Content */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-6"
+          className="space-y-6 order-2 xl:order-1"
         >
           {/* Main Heading */}
           <div className="space-y-4">
@@ -103,13 +103,13 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="space-y-2"
             >
-              <div className="text-terminal-white/60 font-mono text-base">
+              <div className="text-terminal-white font-mono text-sm md:text-base">
                 <span className="text-terminal-orange">$</span> ./introduce_developer.sh
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                <span className="text-terminal-white">Hi, I'm </span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight">
+                <span className="text-white">Hi, I'm </span>
                 <br />
-                <span className="text-gradient-orange neon-text inline-block">
+                <span className="text-terminal-orange inline-block">
                   <Typewriter
                     words={['Sumit', 'Developer', 'Creator', 'Problem Solver']}
                     loop={true}
@@ -129,10 +129,10 @@ const Hero = () => {
               transition={{ delay: 0.4 }}
               className="space-y-3"
             >
-              <p className="text-xl md:text-2xl font-bold">
-                <span className="text-terminal-orange-highlight neon-text">UI/UX & Frontend Specialist</span>
+              <p className="text-lg sm:text-xl md:text-2xl font-bold">
+                <span className="text-white">Full Stack Developer</span>
               </p>
-              <p className="text-base text-terminal-white/80 leading-relaxed max-w-lg">
+              <p className="text-sm sm:text-base text-white leading-relaxed max-w-lg">
                 Crafting beautiful, responsive web experiences with modern technologies. 
                 Passionate about clean code, innovative design, and turning ideas into reality.
               </p>
@@ -143,7 +143,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="terminal-border p-4 neumorphism max-w-lg"
+              className="terminal-border p-3 sm:p-4 neumorphism max-w-lg"
             >
               <div className="terminal-header mb-3">
                 <div className="terminal-button terminal-red"></div>
@@ -152,12 +152,12 @@ const Hero = () => {
                 <span className="text-terminal-orange text-xs font-bold ml-2">developer.js</span>
               </div>
               <div className="font-mono text-xs leading-relaxed">
-                <div className="text-terminal-orange">const <span className="text-terminal-info">developer</span> = {`{`}</div>
-                <div className="ml-3 text-terminal-orange-highlight">name: <span className="text-terminal-success">'Sumit'</span>,</div>
-                <div className="ml-3 text-terminal-orange-highlight">role: <span className="text-terminal-success">'Frontend Specialist'</span>,</div>
-                <div className="ml-3 text-terminal-orange-highlight">skills: <span className="text-terminal-success">['React', 'TypeScript', 'Node.js']</span>,</div>
-                <div className="ml-3 text-terminal-orange-highlight">passionate_about: <span className="text-terminal-success">'Clean Code & Great UX'</span>,</div>
-                <div className="ml-3 text-terminal-orange-highlight">status: <span className="text-terminal-info">'Available for opportunities'</span></div>
+                <div className="text-terminal-orange">const <span className="text-terminal-white">developer</span> = {`{`}</div>
+                <div className="ml-3 text-terminal-orange">name: <span className="text-terminal-white">'Sumit'</span>,</div>
+                <div className="ml-3 text-terminal-orange">role: <span className="text-terminal-white">'Frontend Specialist'</span>,</div>
+                <div className="ml-3 text-terminal-orange">skills: <span className="text-terminal-white">['React', 'TypeScript', 'Node.js']</span>,</div>
+                <div className="ml-3 text-terminal-orange">passionate_about: <span className="text-terminal-white">'Clean Code & Great UX'</span>,</div>
+                <div className="ml-3 text-terminal-orange">status: <span className="text-terminal-white">'Available for opportunities'</span></div>
                 <div className="text-terminal-orange">{`}`};</div>
               </div>
             </motion.div>
@@ -168,26 +168,28 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-3"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-lg"
           >
             <motion.button
               onClick={() => scrollToSection('projects')}
-              className="group btn-primary px-6 py-3 rounded-lg font-mono text-base flex items-center gap-2"
+              className="group btn-primary px-4 sm:px-6 py-3 rounded-lg font-mono text-sm sm:text-base flex items-center justify-center gap-2"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
               <FiPlay className="group-hover:animate-pulse" />
-              [ Explore My Work ]
+              <span className="hidden sm:inline">[ Explore My Work ]</span>
+              <span className="sm:hidden">[ Projects ]</span>
             </motion.button>
             
             <motion.button
               onClick={() => setShowTerminal(!showTerminal)}
-              className="group btn-secondary px-6 py-3 rounded-lg font-mono text-base flex items-center gap-2"
+              className="group btn-secondary px-4 sm:px-6 py-3 rounded-lg font-mono text-sm sm:text-base flex items-center justify-center gap-2"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
               <FiCode className="group-hover:animate-spin" />
-              [ {showTerminal ? 'Hide' : 'Show'} Terminal ]
+              <span className="hidden sm:inline">[ {showTerminal ? 'Hide' : 'Show'} Terminal ]</span>
+              <span className="sm:hidden">[ Terminal ]</span>
             </motion.button>
           </motion.div>
 
@@ -196,20 +198,24 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
-            className="grid grid-cols-2 gap-3 max-w-lg"
+            className="grid grid-cols-2 gap-2 sm:gap-3 max-w-lg"
           >
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                className="terminal-border p-3 text-center hover:bg-terminal-orange/10 transition-all duration-300"
+                className={`terminal-border p-2 sm:p-3 text-center transition-all duration-300 ${
+                  index % 2 === 0 ? 'hover:bg-terminal-orange/10' : 'hover:bg-terminal-blue/10'
+                }`}
                 whileHover={{ scale: 1.05, y: -2 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 + index * 0.1 }}
               >
-                <div className="text-xl mb-1">{stat.icon}</div>
-                <div className="text-terminal-orange font-bold text-lg">{stat.value}</div>
-                <div className="text-terminal-white/60 text-xs">{stat.label}</div>
+                <div className="text-lg sm:text-xl mb-1">{stat.icon}</div>
+                <div className={`font-bold text-base sm:text-lg ${
+                  index % 2 === 0 ? 'text-terminal-orange' : 'text-terminal-blue'
+                }`}>{stat.value}</div>
+                <div className="text-white text-xs sm:text-sm">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -220,7 +226,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex justify-center lg:justify-end"
+          className="flex justify-center xl:justify-end order-1 xl:order-2"
         >
           <AnimatePresence mode="wait">
             {showTerminal ? (
@@ -230,7 +236,7 @@ const Hero = () => {
                 animate={{ scale: 1, opacity: 1, rotateY: 0 }}
                 exit={{ scale: 0, opacity: 0, rotateY: 90 }}
                 transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-                className="relative"
+                className="relative w-full max-w-lg"
               >
                 <Terminal />
                 
@@ -270,7 +276,7 @@ const Hero = () => {
                     💻
                   </motion.div>
                   <p className="text-terminal-orange font-mono text-sm">Terminal is sleeping...</p>
-                  <p className="text-terminal-white/60 text-xs">Click the button to wake it up!</p>
+                  <p className="text-terminal-white text-xs">Click the button to wake it up!</p>
                 </div>
               </motion.div>
             )}
@@ -283,14 +289,15 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 z-50"
       >
         <motion.button
           onClick={() => scrollToSection('about')}
-          className="flex flex-col items-center gap-1 text-terminal-orange hover:text-terminal-orange-highlight transition-colors group"
+          className="flex flex-col items-center gap-1 text-terminal-orange hover:text-terminal-orange-highlight transition-colors group backdrop-blur-sm bg-black/20 p-2 rounded-lg"
           whileHover={{ y: -3 }}
         >
-          <span className="text-xs font-mono">Scroll to explore</span>
+          <span className="text-xs font-mono hidden sm:block">Scroll to explore</span>
+          <span className="text-xs font-mono sm:hidden">Scroll</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}

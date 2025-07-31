@@ -16,7 +16,7 @@ const Skills = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-terminal-white mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
             <span className="text-terminal-orange">$</span> cat skills.json
           </h2>
 
@@ -43,8 +43,8 @@ const Skills = () => {
                       onClick={() => setActiveCategory(category.category)}
                       className={`px-6 py-3 text-sm border transition-all duration-300 font-mono ${
                         activeCategory === category.category
-                          ? 'bg-terminal-orange text-black border-terminal-orange glow-orange font-bold'
-                          : 'text-terminal-white border-terminal-orange hover:border-terminal-orange-highlight hover:text-terminal-orange-highlight'
+                          ? 'bg-terminal-orange text-black border-terminal-orange font-bold'
+                          : 'text-white border-terminal-orange hover:border-terminal-orange hover:text-terminal-orange'
                       }`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -71,7 +71,7 @@ const Skills = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="terminal-border bg-terminal-gray/20 hover:bg-terminal-gray/40 transition-all duration-300 group hover-glow"
+                className="terminal-border bg-terminal-gray/20 hover:bg-terminal-gray/40 transition-all duration-300 group"
               >
                 <div className="terminal-header">
                   <div className="terminal-button terminal-red"></div>
@@ -82,13 +82,13 @@ const Skills = () => {
                 
                 <div className="p-6 text-center">
                   <div className="text-4xl mb-3">{skill.icon}</div>
-                  <h3 className="text-lg font-semibold text-terminal-white mb-3">
+                  <h3 className="text-lg font-semibold text-white mb-3">
                     {skill.name}
                   </h3>
                   
                   {/* Progress Bar */}
                   <div className="mb-2">
-                    <div className="flex justify-between text-xs text-terminal-white-muted mb-1">
+                    <div className="flex justify-between text-xs text-white mb-1">
                       <span>Proficiency</span>
                       <span className="text-terminal-orange font-bold">{skill.level}%</span>
                     </div>
@@ -98,15 +98,21 @@ const Skills = () => {
                         whileInView={{ width: `${skill.level}%` }}
                         transition={{ duration: 1, delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className="h-full bg-gradient-to-r from-terminal-orange to-terminal-orange-highlight rounded"
+                        className="h-full bg-gradient-to-r from-terminal-orange to-terminal-orange-light rounded"
                       />
                     </div>
                   </div>
                   
-                  <div className="text-terminal-orange-highlight text-xs font-mono font-bold">
-                    {skill.level >= 90 ? 'Expert' : 
-                     skill.level >= 80 ? 'Advanced' : 
-                     skill.level >= 70 ? 'Intermediate' : 'Learning'}
+                  <div className="text-terminal-orange text-xs font-mono font-bold">
+                    {skill.level >= 90 ? (
+                      <span className="text-terminal-blue">Expert ⭐</span>
+                    ) : skill.level >= 80 ? (
+                      <span className="text-terminal-orange">Advanced</span>
+                    ) : skill.level >= 70 ? (
+                      <span className="text-white">Intermediate</span>
+                    ) : (
+                      <span className="text-terminal-blue-light">Learning 📚</span>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -122,21 +128,21 @@ const Skills = () => {
             className="mt-12 terminal-border p-6 bg-terminal-gray/20"
           >
             <div className="space-y-2">
-              <div className="text-terminal-white">
-                <span className="text-terminal-orange-highlight">sumit@dev</span>
-                <span className="text-terminal-white">:</span>
-                <span className="text-terminal-info">~/skills</span>
-                <span className="text-terminal-white">$ </span>
+              <div className="text-white">
+                <span className="text-terminal-orange">sumit@dev</span>
+                <span className="text-white">:</span>
+                <span className="text-white">~/skills</span>
+                <span className="text-white">$ </span>
                 <span className="text-terminal-orange">npm run --version</span>
               </div>
-              <div className="ml-4 text-terminal-success">
+              <div className="ml-4 text-terminal-orange">
                 Developer v3.0.0 - Always learning, always growing! 🚀
               </div>
-              <div className="text-terminal-white">
-                <span className="text-terminal-orange-highlight">sumit@dev</span>
-                <span className="text-terminal-white">:</span>
-                <span className="text-terminal-info">~/skills</span>
-                <span className="text-terminal-white">$ </span>
+              <div className="text-white">
+                <span className="text-terminal-orange">sumit@dev</span>
+                <span className="text-white">:</span>
+                <span className="text-white">~/skills</span>
+                <span className="text-white">$ </span>
                 <span className="animate-blink text-terminal-orange">|</span>
               </div>
             </div>

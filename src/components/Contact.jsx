@@ -40,36 +40,36 @@ const Contact = () => {
       name: 'Email', 
       icon: FiMail, 
       url: 'mailto:sumit@example.com', 
-      color: 'text-terminal-success',
-      bgColor: 'bg-terminal-success/20',
-      borderColor: 'border-terminal-success/40',
+      color: 'text-terminal-orange',
+      bgColor: 'bg-terminal-orange/20',
+      borderColor: 'border-terminal-orange/40',
       description: 'Drop me a line'
     },
     { 
       name: 'GitHub', 
       icon: FiGithub, 
       url: 'https://github.com/sumit', 
-      color: 'text-terminal-orange-highlight',
-      bgColor: 'bg-terminal-orange-highlight/20',
-      borderColor: 'border-terminal-orange-highlight/40',
+      color: 'text-white',
+      bgColor: 'bg-white/10',
+      borderColor: 'border-white/40',
       description: 'Check my code'
     },
     { 
       name: 'LinkedIn', 
       icon: FiLinkedin, 
       url: 'https://linkedin.com/in/sumit', 
-      color: 'text-terminal-info',
-      bgColor: 'bg-terminal-info/20',
-      borderColor: 'border-terminal-info/40',
+      color: 'text-terminal-blue',
+      bgColor: 'bg-terminal-blue/20',
+      borderColor: 'border-terminal-blue/40',
       description: 'Let\'s connect'
     },
     { 
       name: 'Twitter', 
       icon: FiTwitter, 
       url: 'https://twitter.com/sumit', 
-      color: 'text-terminal-orange',
-      bgColor: 'bg-terminal-orange/20',
-      borderColor: 'border-terminal-orange/40',
+      color: 'text-white',
+      bgColor: 'bg-white/10',
+      borderColor: 'border-white/40',
       description: 'Follow me'
     }
   ];
@@ -101,7 +101,7 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-terminal-white mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
             <span className="text-terminal-orange">$</span> ./contact.sh
           </h2>
 
@@ -116,15 +116,15 @@ const Contact = () => {
             >
               <div className="terminal-header">
                 <div className="terminal-button terminal-red"></div>
-                <div className="terminal-button terminal-yellow"></div>
+                <div className="terminal-button terminal-blue"></div>
                 <div className="terminal-button terminal-green"></div>
-                <span className="text-terminal-orange text-sm font-bold">send-message.js</span>
+                <span className="text-terminal-blue text-sm font-bold">contact-form.js</span>
               </div>
               
               <div className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label className="block text-terminal-white text-sm mb-2">
+                    <label className="block text-white text-sm mb-2">
                       <span className="text-terminal-orange">const</span> name = 
                     </label>
                     <input
@@ -145,7 +145,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-terminal-white text-sm mb-2">
+                    <label className="block text-white text-sm mb-2">
                       <span className="text-terminal-orange">const</span> email = 
                     </label>
                     <input
@@ -166,7 +166,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-terminal-white text-sm mb-2">
+                    <label className="block text-white text-sm mb-2">
                       <span className="text-terminal-orange">const</span> message = 
                     </label>
                     <textarea
@@ -221,7 +221,7 @@ const Contact = () => {
                         initial={{ opacity: 0, y: 10, scale: 0.9 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -10, scale: 0.9 }}
-                        className="text-terminal-success text-center p-4 bg-terminal-success/10 rounded-lg border border-terminal-success/30 flex items-center justify-center gap-2"
+                        className="text-terminal-orange text-center p-4 bg-terminal-orange/10 rounded-lg border border-terminal-orange/30 flex items-center justify-center gap-2"
                       >
                         <FiCheck className="text-lg" />
                         <span className="font-semibold">Message sent successfully! 🚀</span>
@@ -252,10 +252,10 @@ const Contact = () => {
                 <div className="p-6 space-y-4">
                   <div className="text-terminal-white font-mono text-sm leading-relaxed">
                     <span className="text-terminal-orange">{`{`}</span><br/>
-                    <span className="ml-4 text-terminal-orange-highlight">"status":</span> <span className="text-terminal-success">"Available for new opportunities"</span>,<br/>
-                    <span className="ml-4 text-terminal-orange-highlight">"response_time":</span> <span className="text-terminal-success">"Usually within 24 hours"</span>,<br/>
-                    <span className="ml-4 text-terminal-orange-highlight">"location":</span> <span className="text-terminal-success">"Remote / Hybrid"</span>,<br/>
-                    <span className="ml-4 text-terminal-orange-highlight">"interests":</span> <span className="text-terminal-success">["Frontend", "UI/UX", "Open Source"]</span><br/>
+                    <span className="ml-4 text-terminal-orange">"status":</span> <span className="text-terminal-white">"Available for new opportunities"</span>,<br/>
+                    <span className="ml-4 text-terminal-orange">"response_time":</span> <span className="text-terminal-white">"Usually within 24 hours"</span>,<br/>
+                    <span className="ml-4 text-terminal-orange">"location":</span> <span className="text-terminal-white">"Remote / Hybrid"</span>,<br/>
+                    <span className="ml-4 text-terminal-orange">"interests":</span> <span className="text-terminal-white">["Frontend", "UI/UX", "Open Source"]</span><br/>
                     <span className="text-terminal-orange">{`}`}</span>
                   </div>
                 </div>
@@ -304,27 +304,27 @@ const Contact = () => {
               {/* Terminal Command */}
               <div className="terminal-border bg-terminal-gray/20 neumorphism">
                 <div className="p-6">
-                  <div className="text-terminal-white space-y-3 font-mono">
+                  <div className="text-white space-y-3 font-mono">
                     <div className="flex items-center">
-                      <span className="text-terminal-orange-highlight font-bold">sumit@dev</span>
-                      <span className="text-terminal-white">:</span>
-                      <span className="text-terminal-info">~</span>
-                      <span className="text-terminal-white">$ </span>
+                      <span className="text-terminal-orange font-bold">sumit@dev</span>
+                      <span className="text-white">:</span>
+                      <span className="text-white">~</span>
+                      <span className="text-white">$ </span>
                       <span className="text-terminal-orange">echo</span>
-                      <span className="text-terminal-success ml-2">"Let's build something amazing together!"</span>
+                      <span className="text-white ml-2">"Let's build something amazing together!"</span>
                     </div>
                     <motion.div 
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.5 }}
-                      className="ml-4 text-terminal-info font-semibold"
+                      className="ml-4 text-terminal-orange font-semibold"
                     >
                       Let's build something amazing together! ✨
                     </motion.div>
                     <div className="flex items-center">
-                      <span className="text-terminal-orange-highlight font-bold">sumit@dev</span>
+                      <span className="text-terminal-orange font-bold">sumit@dev</span>
                       <span className="text-terminal-white">:</span>
-                      <span className="text-terminal-info">~</span>
+                      <span className="text-terminal-white">~</span>
                       <span className="text-terminal-white">$ </span>
                       <motion.span 
                         className="text-terminal-orange"

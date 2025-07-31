@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiTerminal, FiMenu, FiX } from 'react-icons/fi';
+import { FiTerminal, FiMenu, FiX, FiDownload } from 'react-icons/fi';
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -42,6 +42,11 @@ const Navbar = () => {
     }
   };
 
+  const downloadResume = () => {
+    // Opens your Google Drive resume link
+    window.open('https://drive.google.com/file/d/1NpDOjV7ONZuJfjY1k7n9e9eg1DREpMOO/view?usp=sharing', '_blank');
+  };
+
   return (
     <>
       <motion.nav 
@@ -65,13 +70,13 @@ const Navbar = () => {
               <motion.div
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="p-1.5 bg-terminal-orange rounded-md"
+                className="p-1 sm:p-1.5 bg-terminal-orange rounded-md"
               >
-                <FiTerminal className="text-black text-lg" />
+                <FiTerminal className="text-black text-base sm:text-lg" />
               </motion.div>
-              <div className="hidden md:block">
-                <div className="text-terminal-orange font-bold text-lg">sumit@dev</div>
-                <div className="text-terminal-white/60 text-xs">~/portfolio</div>
+              <div className="hidden sm:block">
+                <div className="text-terminal-orange font-bold text-base sm:text-lg">sumit@dev</div>
+                <div className="text-white/60 text-xs">~/portfolio</div>
               </div>
             </motion.div>
 
@@ -91,8 +96,8 @@ const Navbar = () => {
                       onClick={() => scrollToSection(item.id)}
                       className={`group relative px-3 py-2 text-xs font-mono transition-all duration-300 border border-transparent rounded-md ${
                         activeSection === item.id 
-                          ? 'bg-terminal-orange text-black border-terminal-orange glow-orange-intense' 
-                          : 'text-terminal-white hover:text-terminal-orange hover:border-terminal-orange/50 hover:bg-terminal-orange/10'
+                          ? 'bg-terminal-orange text-black border-terminal-orange' 
+                          : 'text-white hover:text-terminal-orange hover:border-terminal-orange/50 hover:bg-terminal-orange/10'
                       }`}
                       whileHover={{ scale: 1.05, y: -1 }}
                       whileTap={{ scale: 0.95 }}
@@ -119,6 +124,20 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
+
+            {/* Resume Download Button */}
+            <motion.button
+              onClick={downloadResume}
+              className="btn-blue px-3 sm:px-4 py-2 text-xs sm:text-sm font-mono flex items-center gap-1 sm:gap-2 rounded-lg"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <FiDownload size={14} />
+              <span className="hidden sm:inline">CV</span>
+            </motion.button>
 
             {/* Mobile Menu Button */}
             <motion.button
@@ -187,7 +206,7 @@ const Navbar = () => {
                   </div>
                   <div className="p-4 text-center">
                     <div className="text-terminal-orange font-bold text-lg">Navigation Menu</div>
-                    <div className="text-terminal-white/60 text-sm">Select a destination</div>
+                    <div className="text-white text-sm">Select a destination</div>
                   </div>
                 </div>
 
@@ -200,7 +219,7 @@ const Navbar = () => {
                       className={`w-full flex items-center gap-4 p-4 text-left rounded-lg border transition-all duration-300 ${
                         activeSection === item.id
                           ? 'bg-terminal-orange text-black border-terminal-orange'
-                          : 'text-terminal-white border-terminal-orange/30 hover:border-terminal-orange hover:bg-terminal-orange/10'
+                          : 'text-white border-terminal-orange/30 hover:border-terminal-orange hover:bg-terminal-orange/10'
                       }`}
                       initial={{ x: 50, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
@@ -215,15 +234,32 @@ const Navbar = () => {
                       </div>
                     </motion.button>
                   ))}
+
+                  {/* Resume Download Button in Mobile Menu */}
+                  <motion.button
+                    onClick={downloadResume}
+                    className="w-full flex items-center gap-4 p-4 text-left rounded-lg border border-terminal-blue/30 hover:border-terminal-blue hover:bg-terminal-blue/10 text-white transition-all duration-300"
+                    initial={{ x: 50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: navItems.length * 0.1 }}
+                    whileHover={{ x: 10 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className="text-2xl"><FiDownload /></span>
+                    <div>
+                      <div className="font-bold">View Resume</div>
+                      <div className="text-sm opacity-70">Open my CV in new tab</div>
+                    </div>
+                  </motion.button>
                 </div>
 
                 {/* Mobile Terminal Footer */}
                 <div className="mt-8 terminal-border">
                   <div className="p-4 font-mono text-sm">
                     <div className="text-terminal-orange">$ whoami</div>
-                    <div className="text-terminal-success ml-2">sumit-frontend-developer</div>
+                    <div className="text-white ml-2">sumit-frontend-developer</div>
                     <div className="text-terminal-orange">$ pwd</div>
-                    <div className="text-terminal-info ml-2">/home/sumit/portfolio</div>
+                    <div className="text-white ml-2">/home/sumit/portfolio</div>
                     <div className="flex items-center">
                       <span className="text-terminal-orange">$ </span>
                       <motion.span 

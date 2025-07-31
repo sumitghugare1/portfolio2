@@ -8,7 +8,7 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <div className="bg-terminal-gradient text-terminal-white font-mono min-h-screen">
+    <div className="bg-gradient-to-br from-terminal-bg to-terminal-bg-secondary text-terminal-white font-mono min-h-screen">
       <Navbar />
       <div id="home">
         <Hero />
